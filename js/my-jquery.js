@@ -27,10 +27,10 @@ function openShop()
         data: {action: 'open_pressed'}, 
         dataType:"json",
          success:function(response){
-            alert(response);                  
+            console.log(response);                  
         },
         error: function(response){
-            alert(response+ " open error");
+           alert("An error occurred");
         }
     });                            
 }
@@ -52,10 +52,10 @@ function closeShop(){
         data: {action: 'close_pressed'}, 
         dataType:"json",
          success:function(response){
-            alert(response);                  
+           console.log(response);                  
         },
         error: function(response){
-            alert(response + "close error");
+            alert("An error occurred");
         }
     }); 
                                      
