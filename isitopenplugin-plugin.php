@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: isItOpen
-Plugin URI: 
-Description: Indicator for Jenni Taris's shop.
+Plugin URI: https://github.com/Skwangles/WordpressPlugin-IsItOpen
+Description: Indicator for if the shop is open
 Author: Tree_house
-Author URI: http://youtube.com/microtechtutorials
+Author URI: https://github.com/Skwangles
 Version: 2.0
 */
 function my_enqueue($hook) {
