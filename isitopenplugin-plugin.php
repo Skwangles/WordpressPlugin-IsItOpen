@@ -94,8 +94,13 @@ if(get_option('my_option') == TRUE){
 						<style>
 						#demobox {
    						background-color: #cfc ;
-  						padding: 10px ;
+  						margin:auto;
+						font-size: 20px;
+						text-align: center;
   						border: 1px solid green ;
+						width: 40%;
+						height: 60px;
+						font-weight: bold;
 						}
 						</style>'; 
 }
