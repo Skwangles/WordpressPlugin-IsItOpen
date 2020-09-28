@@ -10,7 +10,7 @@ Version: 2.0
 function my_enqueue($hook) {
 
 wp_enqueue_script( 'ajax-script', plugins_url("/js/my-jquery.js",__FILE__), array('jquery'));
-
+wp_enqueue_style('csspage', plugins_url("/css/my-css.css", __FILE__));
 	
 wp_localize_script( 'ajax-script', 'my_ajax_object', array(
 'ajax_url' => admin_url( 'admin-ajax.php' )));
@@ -29,12 +29,18 @@ function setIsOpen($isOpen){
 	update_option('my_option', $isOpen);	
 }//after each set of $isOpen, it updates the database version.
 
-add_action("admin_menu", "addMenu");
-function addMenu()
-{
-	add_menu_page("Shop Open Indicator", "Shop Open Indicator", 4, "ShopIndicator", "SettingOpenMenu" );
-  
+function shop_indicator_menu(){
+		$page_title = 'Shop Open Indicator';   
+		$menu_title = 'Shop Open Indicate';   
+		$capability = 'manage_options';   
+		$menu_slug  = 'shopindicator';   
+		$function   = 'SettingOpenMenu';   
+	$page_icon = '';
+		$position   = 4;    
+		add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $page_icon, $position );
 }
+add_action("admin_menu","shop_indicator_menu");
+
 function OpenText(){
 if(get_option('my_option'))	
 	echo '<script>setTrue(true);</script>';
@@ -88,7 +94,8 @@ function wpb_OpenClosed_Shortcode()
 								
 	
 if(get_option('my_option') == TRUE){
-					$string .= '<div id="demobox">
+					$string = '
+						<div id="demobox">
 						Our shop is OPEN right now!
 						</div>						
 						<style>
@@ -106,16 +113,14 @@ if(get_option('my_option') == TRUE){
 }
 elseif (get_option('my_option') == FALSE)
 {
-	$string .= "";
+	$string = '';
 }
 else
 {
-$string .= "";
+	$string = '';
 }
 					// Output needs to be return
 						//return $string;
-			
-	
 	return $string;
 } 
 		// register shortcode
